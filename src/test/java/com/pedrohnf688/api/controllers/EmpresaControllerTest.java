@@ -1,6 +1,7 @@
 package com.pedrohnf688.api.controllers;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -14,14 +15,13 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.pedrohnf688.api.entidades.Empresa;
 import com.pedrohnf688.api.service.EmpresaService;
@@ -42,9 +42,10 @@ public class EmpresaControllerTest {
 	
 	private static final String BUSCAR_EMPRESA_CNPJ_URL = "/api/empresas/cnpj/";
 	private static final Long ID = Long.valueOf(1);
-	private static final String CNPJ = "27677579000188";
+	private static final String CNPJ = "11861136000102";
 	private static final String RAZAO_SOCIAL = "Empresa Pedrohnf";
 	
+
 	
 	@Test
 	public void testBuscarEmpresaCnpjInvalido() throws Exception {
@@ -53,7 +54,6 @@ public class EmpresaControllerTest {
 		mvc.perform(MockMvcRequestBuilders.get(BUSCAR_EMPRESA_CNPJ_URL + CNPJ).accept(MediaType.APPLICATION_JSON))
 		.andExpect(status().isBadRequest()).andExpect(jsonPath("$.errors").value("Empresa não encontrada para o CNPJ:" + CNPJ)); 
 	}
-	
 	
 	@Test
 	public void testBuscarEmpresaCnpjValido() throws Exception {
