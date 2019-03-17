@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -27,13 +29,16 @@ public class LancamentoServiceImpl implements LancamentoService{
 		return this.lancamentoRepositorio.findByFuncionarioId(funcionarioId, pageRequest);
 	}
 
+
 	@Override
+    @Cacheable("lancamentoPorId") 
 	public Optional<Lancamento> buscarPorId(Long id) {
 		log.info("Buscando um Lancamento pelo Id: {}", id);
 		return this.lancamentoRepositorio.findById(id);
 	}
 
 	@Override
+	@CachePut("lancamentoPorId")
 	public Lancamento Persistir(Lancamento lancamento) {
 		log.info("Persistindo o Lancamento: {}",lancamento);
 		return this.lancamentoRepositorio.save(lancamento);
