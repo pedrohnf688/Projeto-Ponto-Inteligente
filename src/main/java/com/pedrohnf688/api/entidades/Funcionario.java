@@ -21,6 +21,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.Transient;
 
 import com.pedrohnf688.api.enums.PerfilEnum;
@@ -32,7 +33,8 @@ public class Funcionario implements Serializable{
 	private static final long serialVersionUID = -4675750225977305608L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	
 	@Column(name = "nome", nullable = false)

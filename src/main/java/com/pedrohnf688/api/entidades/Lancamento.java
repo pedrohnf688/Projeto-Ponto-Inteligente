@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.pedrohnf688.api.enums.TipoEnum;
 
 @Entity
@@ -27,7 +29,8 @@ public class Lancamento implements Serializable{
 	private static final long serialVersionUID = 3579425958759029515L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	
 	@Temporal(TemporalType.TIMESTAMP)

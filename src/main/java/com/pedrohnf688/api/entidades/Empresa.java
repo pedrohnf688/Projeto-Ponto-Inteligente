@@ -16,6 +16,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "empresa")
 public class Empresa implements Serializable{
@@ -23,7 +25,8 @@ public class Empresa implements Serializable{
 	private static final long serialVersionUID = 5533875857670316670L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	
 	@Column(name = "razao_Social", nullable = false)
