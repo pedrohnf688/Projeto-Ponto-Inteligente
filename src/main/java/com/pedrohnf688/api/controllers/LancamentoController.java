@@ -139,7 +139,7 @@ public class LancamentoController {
 		Lancamento lancamento = this.converterParaLancamento(lancamentoDto, result);
 		
 		if(result.hasErrors()) {
-			log.error("Errro validando lancamento:{}", result.getAllErrors());
+			log.error("Erro validando lancamento:{}", result.getAllErrors());
 			
 			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 			
