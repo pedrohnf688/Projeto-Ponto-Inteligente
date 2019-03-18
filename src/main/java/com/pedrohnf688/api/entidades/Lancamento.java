@@ -29,7 +29,7 @@ public class Lancamento implements Serializable{
 	private static final long serialVersionUID = 3579425958759029515L;
 	
 	@Id
-	@GeneratedValue(generator = "increment")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	

@@ -33,7 +33,7 @@ public class Funcionario implements Serializable{
 	private static final long serialVersionUID = -4675750225977305608L;
 	
 	@Id
-	@GeneratedValue(generator = "increment")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	

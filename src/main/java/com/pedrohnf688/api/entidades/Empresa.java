@@ -25,7 +25,7 @@ public class Empresa implements Serializable{
 	private static final long serialVersionUID = 5533875857670316670L;
 	
 	@Id
-	@GeneratedValue(generator = "increment")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	
