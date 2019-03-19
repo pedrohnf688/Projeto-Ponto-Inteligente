@@ -14,11 +14,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.pedrohnf688.api.security.utils.JwtTokenUtil;
 
-
+@Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter{
 
 	private static final String AUTH_HEADER = "Authorization";
@@ -62,26 +63,4 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter{
 		
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

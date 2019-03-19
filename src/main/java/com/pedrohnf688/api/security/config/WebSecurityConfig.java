@@ -24,7 +24,7 @@ import com.pedrohnf688.api.security.JwtAuthenticationEntryPoint;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@ComponentScan("com.pedrohnf688.api.security")
+@ComponentScan("com.pedrohnf688.api")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
